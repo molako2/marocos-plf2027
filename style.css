@@ -70,15 +70,15 @@ main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .aide { margin: 6px 0 0; font-size: .88rem; opacity: .82; }
 .erreur { margin: 6px 0 0; font-weight: 700; color: var(--terracotta); }
 .erreur:empty { display: none; }
-.ligne { display: flex; gap: 8px; }
-.saisie { position: relative; flex: 1; min-width: 0; }
+.ligne { display: flex; flex-wrap: wrap; gap: 8px; }
+.saisie { position: relative; flex: 1 1 150px; min-width: 0; } /* sous 150 px (écran de 320 px), le segment Net / Brut passe à la ligne */
 .saisie::after {
   content: 'DH'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
   font-weight: 700; opacity: .6; pointer-events: none;
 }
 input[type="number"] {
   width: 100%; height: 56px; padding: 0 48px 0 14px; border: 2px solid var(--ligne); border-radius: 14px;
-  background: var(--sable); color: var(--encre); font: 700 1.5rem var(--titre);
+  background: var(--sable); color: var(--encre); font: 700 clamp(1.25rem, 6vw, 1.5rem) var(--titre); /* 1 000 000 tient en 375 px */
   font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield;
 }
 input[type="number"]:focus { border-color: var(--terracotta); }
