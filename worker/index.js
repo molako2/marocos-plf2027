@@ -1,6 +1,6 @@
 // MarocOS : compteur commun des simulations (Cloudflare Worker + Durable Object).
 // Il ne reçoit que le gain sur 5 ans arrondi au millier de dirhams : ni salaire, ni identifiant, et l'IP n'est jamais écrite sur disque.
-const ORIGINES = ['https://molako2.github.io', 'http://localhost:8080']; // filtre les autres sites, pas une authentification
+const ORIGINES = ['https://molako2.github.io', 'https://hassala2027.netlify.app', 'http://localhost:8080']; // filtre les autres sites, pas une authentification
 const GAIN_MAX = 3_200_000; // gain 5 ans d'un net de 1 000 000 DH/mois (maximum du simulateur) ≈ 3 134 171 DH
 const PAR_HEURE = 30; // envois acceptés par IP (ou par bloc IPv6 /64) et par heure
 const TOUS_PAR_HEURE = 3_000; // plafond global, qui borne aussi la mémoire du limiteur
