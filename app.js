@@ -200,7 +200,7 @@ form.addEventListener('submit', (e) => { // touche Entrée / OK du clavier : on 
   salaire.blur();
   carte.scrollIntoView({ block: 'nearest', behavior: comportement() });
 });
-// Compteur commun : seul le gain sur 5 ans arrondi part, après 2,5 s sans saisie, 10 fois au plus par visite.
+// Compteur commun : seul le gain sur 5 ans arrondi au millier part, après 2,5 s sans saisie, 10 fois au plus par visite.
 // Le chiffre prérempli à l'ouverture ne compte pas : il faut une saisie.
 const API = 'https://marocos-compteur.chicshop.workers.dev';
 let envois = 0, dernierGain = null, tCompteur;
@@ -214,7 +214,7 @@ const appel = (init) => fetch(API, init).then((r) => r.json()).then(majCompteur,
 function compterSimulation(cumul) {
   clearTimeout(tCompteur);
   tCompteur = setTimeout(() => {
-    const gain = Math.round(cumul);
+    const gain = Math.round(cumul / 1000) * 1000; // le serveur refuse un gain plus précis
     if (gain === dernierGain || envois >= 10) return;
     dernierGain = gain;
     envois++;
