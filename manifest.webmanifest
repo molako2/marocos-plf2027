@@ -1,0 +1,9 @@
+{
+  "name": "MarocOS – Simulateur PLF 2027",
+  "short_name": "MarocOS",
+  "lang": "fr",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F6EEDD",
+  "theme_color": "#F6EEDD"
+}
