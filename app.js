@@ -231,6 +231,7 @@ function compterSimulation(cumul) {
 }
 appel();
 
+$('.ligne .segment').addEventListener('change', (e) => e.currentTarget.classList.add('touche'), { once: true }); // fin de l'appel Net / Brut
 majCharges();
 calculer();
 
