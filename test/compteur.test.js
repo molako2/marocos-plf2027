@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import worker, { Compteur } from '../worker/index.js';
+import worker, { Compteur, bloc } from '../worker/index.js';
 
 // Faux environnement Cloudflare : un seul objet durable, stockage en mémoire.
 function env() {
@@ -48,8 +48,17 @@ test('limite à 30 envois par IP, et par bloc IPv6 /64, et par heure', async () 
   assert.equal((await poster(e, { gain: 1000 }, { ip: '2001:db8:1:2:ffff::1' })).status, 429);
 });
 
-test('plafond global de 3 000 envois par heure', async () => {
+test('regroupe une adresse IPv6 abrégée dans son bloc /64', () => {
+  assert.equal(bloc('2001:db8::1'), '2001:db8:0:0');
+  assert.equal(bloc('2001:0DB8:0:0:0:0:0:2'), '2001:db8:0:0');
+  assert.equal(bloc('2001:db8:1:2::5'), '2001:db8:1:2');
+  assert.equal(bloc('1.2.3.4'), '1.2.3.4');
+});
+
+test('plafond global de 3 000 envois par heure, qu\'une seule adresse ne peut pas épuiser', async () => {
   const e = env();
-  for (let i = 0; i < 3000; i++) await poster(e, { gain: 0 }, { ip: `10.0.${i >> 8}.${i & 255}` });
+  for (let i = 0; i < 100; i++) await poster(e, { gain: 0 }, { ip: '6.6.6.6' }); // 30 acceptés, 70 refusés
+  assert.equal((await poster(e, { gain: 0 }, { ip: '7.7.7.7' })).status, 200);
+  for (let i = 0; i < 2969; i++) await poster(e, { gain: 0 }, { ip: `10.0.${i >> 8}.${i & 255}` });
   assert.equal((await poster(e, { gain: 0 }, { ip: '9.9.9.9' })).status, 429);
 });
