@@ -206,9 +206,17 @@ const API = 'https://marocos-compteur.chicshop.workers.dev';
 let envois = 0, dernierGain = null, tCompteur;
 function majCompteur(s) {
   if (!Number.isFinite(s?.simulations)) return;
-  $('#compteur').hidden = false;
+  const bloc = $('#compteur'), monte = s.simulations > ($('#nb-sims').valeur ?? Infinity); // pas de fête au premier chargement
+  bloc.hidden = false;
   compter($('#nb-sims'), s.simulations, nombre);
   compter($('#total-eco'), s.economies, dh);
+  $('#the-bloc').hidden = s.economies < 20;
+  $('#the-total').textContent = `Ya3ni ≈ ${nombre(Math.floor(s.economies / 10))} verres de thé à la menthe, pour tout le monde.`;
+  if (!monte) return;
+  bloc.classList.remove('fete');
+  void bloc.offsetWidth; // relance l'animation
+  bloc.classList.add('fete');
+  setTimeout(() => bloc.classList.remove('fete'), 1600); // puis la ola reprend
 }
 const appel = (init) => fetch(API, init).then((r) => r.json()).then(majCompteur, () => {}); // hors ligne : le bloc reste masqué
 function compterSimulation(cumul) {

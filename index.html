@@ -20,6 +20,16 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="khatam" viewBox="-10 -10 20 20"><rect x="-6.5" y="-6.5" width="13" height="13"/><rect x="-6.5" y="-6.5" width="13" height="13" transform="rotate(45)"/></symbol>
+  <symbol id="mini" viewBox="0 0 160 140"><!-- mini-hssala du compteur : la couleur du corps vient du fill du <use> -->
+    <path d="M80 20C128 20 150 52 150 82S124 128 80 128 10 112 10 82 32 20 80 20Z"/>
+    <rect x="56" y="118" width="48" height="14" rx="6" fill="#16325C" opacity=".35"/>
+    <path d="M14 90h132" stroke="#16325C" stroke-width="12"/><path d="M18 90h124" stroke="#E7B84A" stroke-width="4" stroke-dasharray="5 7"/>
+    <rect x="60" y="25" width="40" height="8" rx="4" fill="#16325C"/>
+    <g fill="#16325C"><circle cx="60" cy="58" r="6.5"/><circle cx="100" cy="58" r="6.5"/></g>
+    <g fill="#fff"><circle cx="62.5" cy="55.5" r="2.2"/><circle cx="102.5" cy="55.5" r="2.2"/></g>
+    <path d="M66 70q14 12 28 0" stroke="#16325C" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    <g fill="#fff" opacity=".35"><circle cx="43" cy="72" r="7"/><circle cx="117" cy="72" r="7"/></g>
+  </symbol>
 </svg>
 <audio id="musique" src="./assets/musique.mp3" loop preload="metadata"></audio>
 
@@ -168,10 +178,32 @@
 
     <section id="compteur" class="carte compteur" aria-labelledby="t-compteur" hidden>
       <h2 id="t-compteur">Kolchi m3a ba3d — <span lang="ar" dir="rtl">كلشي مع بعض</span></h2>
-      <div class="chiffres">
-        <p><b id="nb-sims">0</b> simulations faites</p>
-        <p><b id="total-eco">0&nbsp;DH</b> d'IR en moins dans les poches, cumulés sur 5&nbsp;ans</p>
+      <p class="aide">Le compteur de tout le monde&nbsp;: chaque simulation glisse son gain dans la grande hssala.</p>
+      <div class="ola" aria-hidden="true">
+        <span class="fan" style="--i:0;--t:76px"><svg viewBox="0 0 160 140"><use href="#mini" fill="#B8502F"/></svg></span>
+        <span class="fan" style="--i:1;--t:62px"><svg viewBox="0 0 160 140"><use href="#mini" fill="#1F6B52"/></svg></span>
+        <span class="fan" style="--i:2;--t:50px"><svg viewBox="0 0 160 140"><use href="#mini" fill="#E7B84A"/></svg></span>
       </div>
+      <div class="chiffres">
+        <div class="tuile">
+          <span class="badge" aria-hidden="true"><svg viewBox="-10 -10 20 20"><use href="#khatam" x="-10" y="-10" width="20" height="20"/><circle r="2.6" fill="#F6EEDD"/></svg><span class="plus1">+1</span></span>
+          <p><b id="nb-sims">0</b> simulations faites</p>
+        </div>
+        <div class="tuile">
+          <span class="badge pile" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></span>
+          <p><b id="total-eco">0&nbsp;DH</b> d'IR en moins dans les poches, cumulés sur 5&nbsp;ans</p>
+        </div>
+      </div>
+      <p id="the-bloc" class="the" hidden>
+        <svg viewBox="0 0 40 48" aria-hidden="true">
+          <path class="vapeur" d="M14 11c-3-3 3-5 0-8M20 11c-3-3 3-5 0-8M26 11c-3-3 3-5 0-8"/>
+          <path d="M8 16h24l-3 28H11z" fill="#F6EEDD" stroke="#16325C" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10.2 24h19.6l-2.2 18.6H12.4z" fill="#B8502F"/>
+          <path d="M7 16h26" stroke="#E7B84A" stroke-width="3" stroke-linecap="round"/>
+          <path d="M23 22c3-6 10-5 10-5s-2 6-10 5z" fill="#1F6B52"/>
+        </svg>
+        <span id="the-total"></span>
+      </p>
       <p class="aide">Seul ton gain estimé, arrondi au millier de dirhams et sans identifiant, alimente ce compteur. Le total affiché est arrondi à 10&nbsp;000&nbsp;DH. Ton salaire ne quitte jamais ton téléphone.</p>
     </section>
   </main>
