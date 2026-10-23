@@ -9,7 +9,7 @@ const { simuler, BAREMES = {} } = moteur;
 
 const $ = (s) => document.querySelector(s);
 const NB = String.fromCharCode(0xa0); // espace insécable
-const SITE = 'https://molako2.github.io/marocos-plf2027/';
+const SITE = 'https://hassala2027.netlify.app/';
 const nf = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
 const nombre = (x) => nf.format(x).replace(/\s/g, NB); // l'espace fine de fr-FR se voit mal en Fraunces : espace insécable
 const dh = (x) => nombre(x) + NB + 'DH';

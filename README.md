@@ -4,7 +4,7 @@
 
 Page web statique qui estime la hausse de salaire net que le projet de loi de finances (PLF) 2027 apporte au Maroc, année par année de 2027 à 2031, par rapport à 2026.
 
-- [Simulateur en ligne](https://molako2.github.io/marocos-plf2027/)
+- [Simulateur en ligne](https://hassala2027.netlify.app/)
 - [Dépôt GitHub molako2/marocos-plf2027](https://github.com/molako2/marocos-plf2027)
 
 ## Ce que fait la page
