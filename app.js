@@ -170,7 +170,9 @@ function calculer() {
   salaire.removeAttribute('aria-invalid');
   if (!v.salaire) return afficher(null); // champ vide, illisible ou 0 : état vide
   try {
-    afficher(simuler(v));
+    const r = simuler(v);
+    afficher(r);
+    return r;
   } catch (e) {
     if (!(e instanceof RangeError)) throw e;
     erreur.textContent = e.message;
@@ -191,13 +193,36 @@ form.addEventListener('input', (e) => {
   if (e.target === charges) majCharges();
   if (e.target === salaire && !dejaDefile) defiler = true;
   clearTimeout(minuterie);
-  minuterie = setTimeout(calculer, 120);
+  minuterie = setTimeout(() => { const r = calculer(); if (r) compterSimulation(r.cumul5ans); }, 120);
 });
 form.addEventListener('submit', (e) => { // touche Entrée / OK du clavier : on ferme le clavier et on montre le résultat
   e.preventDefault();
   salaire.blur();
   carte.scrollIntoView({ block: 'nearest', behavior: comportement() });
 });
+// Compteur commun : seul le gain sur 5 ans arrondi part, après 2,5 s sans saisie, 10 fois au plus par visite.
+// Le chiffre prérempli à l'ouverture ne compte pas : il faut une saisie.
+const API = 'https://marocos-compteur.chicshop.workers.dev';
+let envois = 0, dernierGain = null, tCompteur;
+function majCompteur(s) {
+  if (!Number.isFinite(s?.simulations)) return;
+  $('#compteur').hidden = false;
+  compter($('#nb-sims'), s.simulations, nombre);
+  compter($('#total-eco'), s.economies, dh);
+}
+const appel = (init) => fetch(API, init).then((r) => r.json()).then(majCompteur, () => {}); // hors ligne : le bloc reste masqué
+function compterSimulation(cumul) {
+  clearTimeout(tCompteur);
+  tCompteur = setTimeout(() => {
+    const gain = Math.round(cumul);
+    if (gain === dernierGain || envois >= 10) return;
+    dernierGain = gain;
+    envois++;
+    appel({ method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ gain }) }); // text/plain : pas de requête préalable CORS
+  }, 2500);
+}
+appel();
+
 majCharges();
 calculer();
 

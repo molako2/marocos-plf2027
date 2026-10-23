@@ -21,6 +21,7 @@ h1, h2, h3 { font-family: var(--titre); font-weight: 700; line-height: 1.15; }
 h2 { margin: 0 0 4px; font-size: 1.3rem; }
 h3 { margin: 20px 0 4px; font-size: 1.05rem; }
 [lang="ar"] { font-family: system-ui, sans-serif; }
+h1 [lang="ar"], h2 [lang="ar"] { display: inline-block; } /* l'arabe d'un titre passe à la ligne d'un bloc, sans se couper */
 abbr { text-decoration: none; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--terracotta); outline-offset: 3px; }
@@ -194,6 +195,10 @@ th:first-child { text-align: left; }
 .retour { font-weight: 700; color: var(--menthe); }
 .savoir { box-shadow: none; border: 2px dashed var(--or); }
 .savoir p { margin: 0; }
+.compteur { background: var(--encre); color: var(--sable); }
+.compteur .chiffres { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 12px 0; }
+.compteur .chiffres p { margin: 0; flex: 1 1 200px; }
+.compteur b { display: block; font: 700 clamp(1.6rem, 8vw, 2.2rem) var(--titre); color: var(--or); font-variant-numeric: tabular-nums; }
 .pied { margin-top: 24px; padding: 16px 4px 0; border-top: 2px solid var(--ligne); font-size: .88rem; }
 .pied p { margin: 0; max-width: 60em; }
 

@@ -90,7 +90,8 @@ Facultatif : sans npm, lancez `node --test "test/*.test.js"`.
 
 ## Confidentialité
 
-- Le calcul se fait dans le navigateur. Aucune donnée saisie ne quitte l'appareil.
+- Le calcul se fait dans le navigateur. Le salaire, les personnes à charge et le secteur ne quittent jamais l'appareil.
+- Compteur commun : après une saisie, la page envoie seulement le gain estimé sur 5 ans, arrondi au dirham, à un Worker Cloudflare (`worker/index.js`). Il cumule le nombre de simulations et les gains, sans identifiant ; l'adresse IP ne sert qu'à limiter les envois (30 par heure) et reste en mémoire, jamais écrite sur disque.
 - Le partage (« Sift l s7abek », envoie à tes amis) et la copie sont des actions de l'utilisateur. Le texte partagé ne contient pas le salaire.
 - Le seul stockage local est le choix musique on/off, sous la clé `marocos-musique` de `localStorage`.
 
@@ -100,4 +101,4 @@ MIT. Le texte complet se trouve dans le fichier [LICENSE](LICENSE).
 
 ## Avertissement
 
-> Simulation indicative, fondée sur le projet de loi de finances 2027 tel que déposé au Parlement. Le texte n'est pas définitif : les montants peuvent changer au vote et à la publication de la loi. Cette page ne remplace pas un conseil personnalisé. MarocOS – Open source Project · code sous licence MIT · aucune donnée ne quitte votre téléphone.
+> Simulation indicative, fondée sur le projet de loi de finances 2027 tel que déposé au Parlement. Le texte n'est pas définitif : les montants peuvent changer au vote et à la publication de la loi. Cette page ne remplace pas un conseil personnalisé. MarocOS – Open source Project · code sous licence MIT · votre salaire ne quitte jamais votre téléphone ; seul le gain estimé, arrondi et anonyme, alimente le compteur commun.
