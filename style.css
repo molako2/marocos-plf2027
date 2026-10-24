@@ -48,7 +48,14 @@ a { color: inherit; }
 }
 .pilule:active { transform: scale(.96); }
 .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.gh { fill: currentColor; stroke: none; }
 .eq { width: 18px; height: 18px; fill: var(--terracotta); }
+@media (max-width: 599px) { /* téléphone : GitHub et Musique en icônes, sur la ligne du titre */
+  .entete { flex-wrap: nowrap; }
+  .pilule { position: relative; width: 44px; padding: 0; justify-content: center; }
+  .pilule span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } /* reste lu par les lecteurs d'écran */
+  .pilule svg { width: 22px; height: 22px; }
+}
 .eq rect { transform-box: fill-box; transform-origin: 50% 100%; }
 .eq path { display: none; stroke: var(--encre); stroke-width: 2.5; stroke-linecap: round; }
 .musique[aria-pressed="false"] .eq rect { opacity: .35; }
