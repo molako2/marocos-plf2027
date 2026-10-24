@@ -236,6 +236,7 @@ th:first-child { text-align: left; }
 .fete .tuile { animation: pop .5s cubic-bezier(.3, 1.6, .5, 1); }
 .pied { margin-top: 24px; padding: 16px 4px 0; border-top: 2px solid var(--ligne); font-size: .88rem; }
 .pied p { margin: 0; max-width: 60em; }
+.pied .credit { margin-top: 10px; font-weight: 700; }
 
 @media (hover: hover) {
   .pilule:hover, .pilule:focus-visible { border-color: var(--terracotta); }
