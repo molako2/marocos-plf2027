@@ -60,10 +60,13 @@ function pieces(gain) {
     chute.append(p);
   }
 }
+let tJoie;
 function secouer() {
-  hssala.classList.remove('secoue');
+  hssala.classList.remove('secoue', 'joie');
   void hssala.offsetWidth; // relance l'animation
-  hssala.classList.add('secoue');
+  hssala.classList.add('secoue', 'joie'); // la tirelire est contente : yeux « ^ ^ », sourire, étincelles
+  clearTimeout(tJoie);
+  tJoie = setTimeout(() => hssala.classList.remove('joie'), 1400);
 }
 
 // Équivalence : change toutes les 4 s parmi celles qui s'appliquent, fixe si mouvements réduits.
