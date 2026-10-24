@@ -34,7 +34,7 @@ a { color: inherit; }
 /* En-tête */
 .entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; }
 .marque { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; }
-.marque .par { flex-basis: 100%; font-size: .72rem; opacity: .8; } /* mention sous le logo et le titre */
+.marque .par { flex-basis: 100%; font-size: .83rem; font-weight: 700; color: var(--terracotta); } /* mention sous le logo et le titre */
 .marque p { margin: 0; line-height: 1.1; }
 .marque b { display: block; font: 700 1.35rem var(--titre); }
 .marque small { font-size: .8rem; }
