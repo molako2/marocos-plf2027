@@ -195,7 +195,7 @@ th:first-child { text-align: left; }
 .baremes li, .hypotheses li { padding: 6px 0; border-bottom: 1px dashed var(--ligne); }
 .baremes span { white-space: nowrap; }
 
-/* Partage, à savoir, pied */
+/* Partage, pied */
 .boutons { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 22px;
@@ -206,8 +206,6 @@ th:first-child { text-align: left; }
 .btn.clair { background: var(--blanc); color: var(--terracotta); }
 .btn:active { transform: scale(.96); }
 .retour { font-weight: 700; color: var(--menthe); }
-.savoir { box-shadow: none; border: 2px dashed var(--or); }
-.savoir p { margin: 0; }
 /* Compteur commun « Kolchi m3a ba3d » : trois mini-hssalas font la ola, chacune lance sa pièce */
 .ola { display: flex; justify-content: center; align-items: flex-end; gap: 14px; height: 128px; margin-top: 4px; }
 .fan { position: relative; width: var(--t); }
@@ -237,13 +235,12 @@ th:first-child { text-align: left; }
 .the { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; font-weight: 700; }
 .the svg { flex: none; width: 34px; height: 41px; overflow: visible; }
 .vapeur { fill: none; stroke: var(--ligne); stroke-width: 2; stroke-linecap: round; animation: vapeur 2.2s ease-in-out infinite; }
-.compteur .aide:last-child { margin-top: 12px; }
 /* fête quand ta simulation entre dans le compteur */
 .fete .fan svg { animation: hop .7s cubic-bezier(.3, 1.6, .5, 1) calc(var(--i) * 90ms); }
 .fete .plus1 { animation: plus1 1.2s ease-out; }
 .fete .tuile { animation: pop .5s cubic-bezier(.3, 1.6, .5, 1); }
-.pied { margin-top: 24px; padding: 16px 4px 0; border-top: 2px solid var(--ligne); font-size: .88rem; }
-.pied p { margin: 0; max-width: 60em; }
+.pied { margin-top: 24px; padding: 16px 4px 0; border-top: 2px solid var(--ligne); font-size: .44rem; text-align: center; }
+.pied p { margin: 0 auto; max-width: 60em; }
 @media (hover: hover) {
   .pilule:hover, .pilule:focus-visible { border-color: var(--terracotta); }
   .btn:hover, .btn:focus-visible { box-shadow: 0 8px 18px -10px var(--terracotta); transform: translateY(-1px); }
